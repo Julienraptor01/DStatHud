@@ -26,7 +26,6 @@ import net.minecraft.client.gui.hud.DebugHud;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.integrated.IntegratedServer;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
@@ -46,6 +45,6 @@ public class MixinDebugHud {
     public void showDStat(CallbackInfoReturnable<List<String>> cir, String string, IntegratedServer integratedServer, ClientConnection clientConnection, float f, float g, BlockPos blockPos, Entity entity, Direction direction, String string2, ChunkPos chunkPos, World world, LongSet longSet, List<String> list) {
         if (MinecraftClient.getInstance().isInSingleplayer()) return;
 
-        list.add(Formatting.GOLD + StringUtils.formatBytes(NetworkTrafficHandler.outgoing) + "/s Up, " + StringUtils.formatBytes(NetworkTrafficHandler.incoming) + "/s Down");
+        list.add(StringUtils.formatBytes(NetworkTrafficHandler.outgoing) + "/s Up, " + StringUtils.formatBytes(NetworkTrafficHandler.incoming) + "/s Down");
     }
 }
